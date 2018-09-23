@@ -23,6 +23,9 @@ public:
   // measurement covariance matrix
   Eigen::MatrixXd R_;
 
+  // measurement covariance matrix
+  Eigen::MatrixXd R_radar_;
+
   /**
    * Constructor
    */
@@ -40,10 +43,11 @@ public:
    * @param F_in Transition matrix
    * @param H_in Measurement matrix
    * @param R_in Measurement covariance matrix
+   * @param R_radar_in Measurement covariance matrix for radar
    * @param Q_in Process covariance matrix
    */
   void Init(Eigen::VectorXd &x_in, Eigen::MatrixXd &P_in, Eigen::MatrixXd &F_in,
-      Eigen::MatrixXd &H_in, Eigen::MatrixXd &R_in, Eigen::MatrixXd &Q_in);
+      Eigen::MatrixXd &H_in, Eigen::MatrixXd &R_in, Eigen::MatrixXd &R_radar_in, Eigen::MatrixXd &Q_in);
 
   /**
    * Prediction Predicts the state and the state covariance
@@ -57,6 +61,21 @@ public:
    * @param z The measurement at k+1
    */
   void Update(const Eigen::VectorXd &z);
+
+  /**
+   * Updates the state with radar measurement by using Extended Kalman Filter equations
+   * @param z The measurement at k+1
+   */
+  void UpdateRadar(const Eigen::VectorXd &z, const Eigen::MatrixXd &Hj);
+
+
+  /**
+   * Calculate discrepancy between radar measurement and prediction
+   *
+   * @param z Radar measurement
+   * @return prediction error y
+   */
+  Eigen::MatrixXd CalculateRadarPredictionError(const Eigen::VectorXd &z);
 };
 
 #endif /* KALMAN_FILTER_H_ */
