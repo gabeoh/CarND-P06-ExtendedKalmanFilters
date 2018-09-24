@@ -1,8 +1,8 @@
 # CarND-P06-ExtendedKalmanFilters
 
-CarND-P06-ExtendedKalmanFilters implements sensor fusion of radar and lidar
-measurements to estimate the state of a moving object using Extended Kalman
-Filters. 
+CarND-P06-ExtendedKalmanFilters implements a sensor fusion algorithm of
+radar and lidar measurements to estimate the state of a moving object
+using Extended Kalman Filters. 
 
 ## File Structure
 ### C++ Source Files - /src
@@ -17,12 +17,13 @@ Filters.
 - **[kalman_filter.cpp](src/kalman_filter.cpp)** - defines `predict` function,
     and `update` functions for lidar and radar measurements.
 - **[tools.cpp](src/tools.cpp)** - defines functions to calculate Root Mean
-    Square Error (RMSE) and Jacobian matrix
-    kalman_filter.cpp and kalman_filter.h. You will only need to modify 'kalman_filter.cpp', which contains functions for the prediction and update steps.
+    Square Error (RMSE) and Jacobian matrix.
 ### Other Support Files
+- **[CMakeLists.txt](CMakeLists.txt)** - CMake file
 - **[data/obj_pose-laser-radar-synthetic-input.txt](data/obj_pose-laser-radar-synthetic-input.txt)** -
     a copy of one of the sample data files used by the simulator
-- **[CMakeLists.txt](CMakeLists.txt) - CMake file
+- **[docs/input_file_format.txt](docs/input_file_format.txt)** - 
+    explains input data file format
 
 ## Getting Started
 ### [Download ZIP](https://github.com/gabeoh/CarND-P06-ExtendedKalmanFilters/archive/master.zip) or Git Clone
